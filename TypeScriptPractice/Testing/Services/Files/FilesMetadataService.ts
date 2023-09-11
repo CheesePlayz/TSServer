@@ -1,5 +1,8 @@
 import fs from "fs";
 
+// this could be optimized
+// make FileMetadataModel
+// method that returns that model with name and date
 class FilesMetadataService {
     GetFileSize(filePath: string): number {
         try {
