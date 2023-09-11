@@ -1,9 +1,9 @@
 import fs from "fs";
 
 class FilesMetadataService {
-    async GetFileSize(filePath: string): Promise<number> {
+    GetFileSize(filePath: string): number {
         try {
-            const fileStats = await fs.promises.stat(filePath);
+            const fileStats = fs.statSync(filePath);
             return fileStats.size;
         } catch (error) {
             console.error(`Error getting file size.`);
@@ -11,10 +11,10 @@ class FilesMetadataService {
         }
     }
 
-    async GetFileDate(filePath: string): Promise<Date> {
+    GetFileDate(filePath: string): Date {
         try {
-            const fileStats = await fs.promises.stat(filePath);
-            return fileStats.birthtime;
+            const fileStats = fs.statSync(filePath);
+            return fileStats.ctime;
         } catch (error) {
             console.error(`Error getting file date.`);
             return new Date("0000-00-00"); 
